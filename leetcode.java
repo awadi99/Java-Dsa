@@ -176,25 +176,35 @@ public class leetcode {
         System.err.println();
     }
 
-
-    public static boolean Monotonic(int nums[])
-    {
+    public static boolean Monotonic(int nums[]) {
         boolean increasing = true;
         boolean decreasing = true;
 
-        for(int i =1;i<nums.length;i++)
-        {
-            if(nums[i]>nums[i-1])
-            {
-                decreasing=false;
+        for (int i = 1; i < nums.length; i++) {
+            if (nums[i] > nums[i - 1]) {
+                decreasing = false;
             }
-            if(nums[i]<nums[i-1])
-            {
-                increasing=false;
+            if (nums[i] < nums[i - 1]) {
+                increasing = false;
             }
         }
-        return increasing||decreasing;
+        return increasing || decreasing;
     }
+
+    //Maximum SubArray 
+    public static int Maximum_SubArray(int nums[])
+    {
+        int currentSum = nums[0];
+        int maxSum = nums[0];
+        for(int i =1;i<nums.length;i++)
+        {
+            currentSum=Math.max(nums[i],currentSum+nums[i]);
+            maxSum = Math.max(maxSum,currentSum);
+        }
+        return maxSum;
+    }
+
+
 
     public static void main(String[] args) {
         // question : 26. Remove Duplicates from Sorted Array
@@ -316,8 +326,20 @@ public class leetcode {
          * 6,5,4,4
          * 1,2,3,4,5
          */
-        int num[]={1,2,4,1};
+        int num[] = { 1, 2, 4, 1 };
         System.err.println(Monotonic(num));
 
+        // 53. Maximum Subarray
+        /*
+         * Given an integer array nums, find the subarray with the largest sum, and
+         * return its sum.
+         * Example 1:
+         * 
+         * Input: nums = [-2,1,-3,4,-1,2,1,-5,4]
+         * Output: 6
+         */
+
+        int num1[]={-2,1-3,4,-1,2,1,-5,4};
+        System.err.println("Maximum SubArray = "+Maximum_SubArray(num1));
     }
 }
