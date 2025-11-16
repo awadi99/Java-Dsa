@@ -1,3 +1,4 @@
+import java.util.Arrays;
 
 public class leetcode {
 
@@ -191,20 +192,32 @@ public class leetcode {
         return increasing || decreasing;
     }
 
-    //Maximum SubArray 
-    public static int Maximum_SubArray(int nums[])
-    {
+    // Maximum SubArray
+    public static int Maximum_SubArray(int nums[]) {
         int currentSum = nums[0];
         int maxSum = nums[0];
-        for(int i =1;i<nums.length;i++)
-        {
-            currentSum=Math.max(nums[i],currentSum+nums[i]);
-            maxSum = Math.max(maxSum,currentSum);
+        for (int i = 1; i < nums.length; i++) {
+            currentSum = Math.max(nums[i], currentSum + nums[i]);
+            maxSum = Math.max(maxSum, currentSum);
         }
         return maxSum;
     }
 
+    // Minimize Maximum Pair Sum in Array
+    public static int minPairSum(int nums[]) {
+        int i = 0;
+        int j = nums.length - 1;
+        int result = 0;
+        Arrays.sort(nums);
+        while (i < j) {
+            int sum = nums[i] + nums[j];
+            result = Math.max(result, sum);
+            i++;
+            j--;
 
+        }
+        return result;
+    }
 
     public static void main(String[] args) {
         // question : 26. Remove Duplicates from Sorted Array
@@ -339,7 +352,27 @@ public class leetcode {
          * Output: 6
          */
 
-        int num1[]={-2,1-3,4,-1,2,1,-5,4};
-        System.err.println("Maximum SubArray = "+Maximum_SubArray(num1));
+        int num1[] = { -2, 1 - 3, 4, -1, 2, 1, -5, 4 };
+        System.err.println("Maximum SubArray = " + Maximum_SubArray(num1));
+
+        // Minimize Maximum Pair Sum in Array
+        /*
+         * The pair sum of a pair (a,b) is equal to a + b. The maximum pair sum is the
+         * largest pair sum in a list of pairs.
+         * 
+         * For example, if we have pairs (1,5), (2,3), and (4,4), the maximum pair sum
+         * would be max(1+5, 2+3, 4+4) = max(6, 5, 8) = 8.
+         * Given an array nums of even length n, pair up the elements of nums into n / 2
+         * pairs such that:
+         * 
+         * Each element of nums is in exactly one pair, and
+         * The maximum pair sum is minimized.
+         * Return the minimized maximum pair sum after optimally pairing up the
+         * elements.
+         */
+        int elements[] = { 3, 5, 2, 3 };
+        // normal way they give 8 maximum number and optimize way they give 7 maximum
+        System.err.println("Answer = " + minPairSum(elements));
+
     }
 }
