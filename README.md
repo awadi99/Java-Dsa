@@ -143,7 +143,6 @@ Feel free to open a Pull Request or Issue.
 
 GitHub: https://github.com/awadi99
 
-LinkedIn: (share your link if you want, I can add it)
 
 ⭐ Support
 
