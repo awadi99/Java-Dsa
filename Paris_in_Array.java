@@ -22,7 +22,7 @@ public class Paris_in_Array {
                 System.err.print("(" + curr + "," + number[j] + ")");
                 tp++;
             }
-            System.err.println(); 
+            System.err.println();
         }
         System.err.print("total number of paris =" + tp);
         System.err.println();
@@ -40,7 +40,7 @@ public class Paris_in_Array {
     public static void Paris_in_Array1(int nums[]) {
         for (int i = 0; i < nums.length; i++) {
             int curr = nums[i];
-            for (int j = i+1; j < nums.length; j++) {
+            for (int j = i + 1; j < nums.length; j++) {
                 System.err.print("(" + curr + "," + nums[j] + ")");
             }
             System.err.println();
@@ -48,15 +48,11 @@ public class Paris_in_Array {
 
     }
 
-
-    public static void Paris_of_Array_Element(int nums[])
-    {
-        for(int i =0;i<nums.length;i++)
-        {
+    public static void Paris_of_Array_Element(int nums[]) {
+        for (int i = 0; i < nums.length; i++) {
             int curr = nums[i];
-            for(int j=i+1;j<nums.length;j++)
-            {
-                System.err.print("("+curr+","+nums[j]+")");
+            for (int j = i + 1; j < nums.length; j++) {
+                System.err.print("(" + curr + "," + nums[j] + ")");
             }
             System.err.println();
         }
