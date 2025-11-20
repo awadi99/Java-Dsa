@@ -1,5 +1,4 @@
 import java.util.Arrays;
-
 public class leetcode {
 
     // question : 26. Remove Duplicates from Sorted Array
