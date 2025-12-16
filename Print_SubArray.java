@@ -47,7 +47,6 @@ public class Print_SubArray {
                 }
                 total++;
                 System.err.println();
-
             }
             System.err.print("total sum " + sum);
             System.err.print(" total pairs "+ total);

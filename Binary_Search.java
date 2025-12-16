@@ -1,5 +1,3 @@
-
-
 public class Binary_Search {
 
     // public static int isBinary_Search(int key, int number[]) {

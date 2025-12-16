@@ -253,6 +253,52 @@ public class leetcode {
         }
     }
 
+    // String Valid Palindrome
+    public static boolean stringPalindrome(String s)
+    {
+        s=s.toLowerCase();
+        int p1 =0;
+        int p2=s.length()-1;
+        while(p1<p2){
+            char ch1=s.charAt(p1);
+            char ch2 =s.charAt(p2);
+            
+            if(!(ch1>='a' && ch1<='z' || ch1>='0' && ch1<='9'))
+            {
+                p1++;
+                continue;
+            }
+            if(!(ch2>='a' && ch2<='z' || ch2>='0' && ch2<='9'))
+            {
+                p2--;
+                continue;
+            }
+            if(ch1!=ch2)
+                return false;
+            p1++;
+            p2--;
+        }
+        return true;
+    }
+
+    // 121. Best Time to Buy and Sell Stock
+    public static int buy_Sell_Stock(int prices[])
+    {
+        int maxProfit = 0;
+        int buyProfit = Integer.MAX_VALUE;
+        for(int i  = 0; i < prices.length ; i++)
+        {
+            if(buyProfit < prices[i])
+            {
+                int profit = prices[i]-buyProfit;
+                maxProfit = Math.max( maxProfit , profit);
+            }
+            else{
+                buyProfit = prices[i];
+            }
+        }
+        return maxProfit;
+    }
     public static void main(String[] args) {
         // question : 26. Remove Duplicates from Sorted Array
         /*
@@ -453,6 +499,26 @@ public class leetcode {
             System.err.print(" "+ele);
         }
 
+        // String Valid Palindrome
+        System.err.println();
+        String palindrome = "A,";
+        System.err.println("Palindrome = "+stringPalindrome(palindrome));
+
+
+
+        // 121. Best Time to Buy and Sell Stock
+
+        // You are given an array prices where prices[i] is the price of a given stock
+        // on the ith day.
+
+        // You want to maximize your profit by choosing a single day to buy one stock
+        // and choosing a different day in the future to sell that stock.
+
+        // Return the maximum profit you can achieve from this transaction. If you
+        // cannot achieve any profit, return 0.
+
+        int prices[]= {7,1,5,3,6,4};
+        System.err.println("Max profit = "+buy_Sell_Stock(prices));
 
     }
 }

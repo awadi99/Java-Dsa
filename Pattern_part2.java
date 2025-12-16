@@ -140,45 +140,6 @@ public class Pattern_part2 {
 
     }
 
-    // public static void Is_Diamond_Pattern(int n)
-    // {
-    //     // is not a diamond pattern beacuse the my lower loop miss the print one line of loop
-    //     //    outer loop
-    //     for(int i =1;i<=n;i++)
-    //     {
-    //         // inner loop for space
-    //         for(int j=1;j<=n-i;j++)
-    //         {
-    //             System.err.print(" ");
-    //         }
-    //         // inner loop for print star
-    //         for(int j=1;j<=i;j++)
-    //         {
-    //             System.err.print(" *");
-    //         }
-    //         System.err.println();
-    //     }
-
-    //     // inverse diamond
-    //     // outer loop
-    //     for(int i =1;i<=n;i++)
-    //     {
-    //         // inner loop for space
-    //         for(int j=1;j<=i;j++)
-    //         {
-    //             System.err.print(" ");
-    //         }
-    //         // inner inverse loop for print star
-    //         for(int j=1;j<=n-i;j++)
-    //         {
-    //             System.err.print(" *");
-    //         }
-    //         System.err.println();
-    //     }
-
-    // }
-
-
     public static void Is_Diamond_Pattern(int n){
         // outer loop
         for(int i=1;i<=n;i++)
