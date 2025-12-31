@@ -133,6 +133,20 @@ public class Linked_list {
         return val;
     }
 
+
+    public int searchList(int target){
+        Node temp = head;
+        int i =0;
+        while(temp!=null){
+            if(temp.data==target){
+                return i;
+            }
+            temp=temp.next;
+            i++;
+        }
+        return -1;
+    
+    } 
     public static void main(String args[]) {
         Linked_list ll = new Linked_list();
         ll.addFirst(2);
@@ -149,6 +163,8 @@ public class Linked_list {
         ll.print();
         System.err.println();
         System.err.println("Size of Linklist = " + size);
+        System.err.println(ll.searchList(3));
+
 
     }
 }
