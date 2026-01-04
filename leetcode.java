@@ -1,4 +1,5 @@
 import java.util.Arrays;
+
 public class leetcode {
 
     // question : 26. Remove Duplicates from Sorted Array
@@ -254,26 +255,23 @@ public class leetcode {
     }
 
     // String Valid Palindrome
-    public static boolean stringPalindrome(String s)
-    {
-        s=s.toLowerCase();
-        int p1 =0;
-        int p2=s.length()-1;
-        while(p1<p2){
-            char ch1=s.charAt(p1);
-            char ch2 =s.charAt(p2);
-            
-            if(!(ch1>='a' && ch1<='z' || ch1>='0' && ch1<='9'))
-            {
+    public static boolean stringPalindrome(String s) {
+        s = s.toLowerCase();
+        int p1 = 0;
+        int p2 = s.length() - 1;
+        while (p1 < p2) {
+            char ch1 = s.charAt(p1);
+            char ch2 = s.charAt(p2);
+
+            if (!(ch1 >= 'a' && ch1 <= 'z' || ch1 >= '0' && ch1 <= '9')) {
                 p1++;
                 continue;
             }
-            if(!(ch2>='a' && ch2<='z' || ch2>='0' && ch2<='9'))
-            {
+            if (!(ch2 >= 'a' && ch2 <= 'z' || ch2 >= '0' && ch2 <= '9')) {
                 p2--;
                 continue;
             }
-            if(ch1!=ch2)
+            if (ch1 != ch2)
                 return false;
             p1++;
             p2--;
@@ -282,23 +280,44 @@ public class leetcode {
     }
 
     // 121. Best Time to Buy and Sell Stock
-    public static int buy_Sell_Stock(int prices[])
-    {
+    public static int buy_Sell_Stock(int prices[]) {
         int maxProfit = 0;
         int buyProfit = Integer.MAX_VALUE;
-        for(int i  = 0; i < prices.length ; i++)
-        {
-            if(buyProfit < prices[i])
-            {
-                int profit = prices[i]-buyProfit;
-                maxProfit = Math.max( maxProfit , profit);
-            }
-            else{
+        for (int i = 0; i < prices.length; i++) {
+            if (buyProfit < prices[i]) {
+                int profit = prices[i] - buyProfit;
+                maxProfit = Math.max(maxProfit, profit);
+            } else {
                 buyProfit = prices[i];
             }
         }
         return maxProfit;
     }
+
+    // 258. Add Digits
+    // Given an integer num, repeatedly add all its digits until the result has only
+    // one digit, and return it.
+
+    static int sum = 0;
+
+    public static int countOfDigit(int num) {
+        int count = 0;
+        sum = 0;
+        while (num != 0) {
+            sum += num % 10;
+            num /= 10;
+            count++;
+        }
+        return count;
+    }
+
+    public static int addDigit(int num) {
+        while (countOfDigit(num) > 1) {
+            num = sum;
+        }
+        return sum;
+    }
+
     public static void main(String[] args) {
         // question : 26. Remove Duplicates from Sorted Array
         /*
@@ -492,19 +511,16 @@ public class leetcode {
          * Output: [1,5,1]
          */
 
-        int Permutation[]={1,3,4,5,2};
+        int Permutation[] = { 1, 3, 4, 5, 2 };
         Next_Permutation(Permutation);
-        for (int ele : Permutation)
-        {
-            System.err.print(" "+ele);
+        for (int ele : Permutation) {
+            System.err.print(" " + ele);
         }
 
         // String Valid Palindrome
         System.err.println();
         String palindrome = "A,";
-        System.err.println("Palindrome = "+stringPalindrome(palindrome));
-
-
+        System.err.println("Palindrome = " + stringPalindrome(palindrome));
 
         // 121. Best Time to Buy and Sell Stock
 
@@ -517,8 +533,39 @@ public class leetcode {
         // Return the maximum profit you can achieve from this transaction. If you
         // cannot achieve any profit, return 0.
 
-        int prices[]= {7,1,5,3,6,4};
-        System.err.println("Max profit = "+buy_Sell_Stock(prices));
+        int prices[] = { 7, 1, 5, 3, 6, 4 };
+        System.err.println("Max profit = " + buy_Sell_Stock(prices));
+
+
+        // 258 addDigit
+        /*
+        *
+         * Given an integer num, repeatedly add all its digits until the result has only
+         * one digit, and return it.
+         * 
+         * 
+         * 
+         * Example 1:
+         * 
+         * Input: num = 38
+         * Output: 2
+         * Explanation: The process is
+         * 38 --> 3 + 8 --> 11
+         * 11 --> 1 + 1 --> 2
+         * Since 2 has only one digit, return it.
+         * Example 2:
+         * 
+         * Input: num = 0
+         * Output: 0
+         * 
+         * 
+         * Constraints:
+         * 
+         * 0 <= num <= 231 - 1
+         */
+
+        int Digit = 38;
+        System.err.println("answer = "+ addDigit(Digit));
 
     }
 }
