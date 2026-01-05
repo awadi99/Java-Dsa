@@ -318,6 +318,24 @@ public class leetcode {
         return sum;
     }
 
+    public static int[] plusOne(int nums[]) {
+        int n = nums.length;
+        int i = n - 1;
+        while (i >= 0) {
+            if(nums[i]<9){
+                nums[i]+=1;
+                return nums;
+            }
+            // if we get the 9 element
+            nums[i]=0; //9+1 = 10
+            i--;
+        }
+        nums = new int [nums.length+1];
+        nums[0]+=1;
+        return nums;
+
+    }
+
     public static void main(String[] args) {
         // question : 26. Remove Duplicates from Sorted Array
         /*
@@ -536,10 +554,9 @@ public class leetcode {
         int prices[] = { 7, 1, 5, 3, 6, 4 };
         System.err.println("Max profit = " + buy_Sell_Stock(prices));
 
-
         // 258 addDigit
         /*
-        *
+         *
          * Given an integer num, repeatedly add all its digits until the result has only
          * one digit, and return it.
          * 
@@ -565,7 +582,53 @@ public class leetcode {
          */
 
         int Digit = 38;
-        System.err.println("answer = "+ addDigit(Digit));
+        System.err.println("answer = " + addDigit(Digit));
 
+        // 66 Plus one
+        /*
+         * You are given a large integer represented as an integer array digits, where
+         * each digits[i] is the ith digit of the integer. The digits are ordered from
+         * most significant to least significant in left-to-right order. The large
+         * integer does not contain any leading 0's.
+         * 
+         * Increment the large integer by one and return the resulting array of digits.
+         * 
+         * 
+         * 
+         * Example 1:
+         * 
+         * Input: digits = [1,2,3]
+         * Output: [1,2,4]
+         * Explanation: The array represents the integer 123.
+         * Incrementing by one gives 123 + 1 = 124.
+         * Thus, the result should be [1,2,4].
+         * Example 2:
+         * 
+         * Input: digits = [4,3,2,1]
+         * Output: [4,3,2,2]
+         * Explanation: The array represents the integer 4321.
+         * Incrementing by one gives 4321 + 1 = 4322.
+         * Thus, the result should be [4,3,2,2].
+         * Example 3:
+         * 
+         * Input: digits = [9]
+         * Output: [1,0]
+         * Explanation: The array represents the integer 9.
+         * Incrementing by one gives 9 + 1 = 10.
+         * Thus, the result should be [1,0].
+         * 
+         * 
+         * Constraints:
+         * 
+         * 1 <= digits.length <= 100
+         * 0 <= digits[i] <= 9
+         * digits does not contain any leading 0's.
+         */
+
+        int digits [] ={9};
+        digits= plusOne(digits);
+        for (int i : digits) {
+            System.err.print("["+i+"]");
+        }
     }
 }
