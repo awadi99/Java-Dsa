@@ -336,17 +336,28 @@ public class leetcode {
 
     }
 
-
-
-    public static boolean containsDuplicate(int nums[])
-    {
+    public static boolean containsDuplicate(int nums[]) {
         Arrays.sort(nums);
-        for(int i =0;i<nums.length-1;i++ ){
-            if(nums[i]==nums[i+1]){
+        for (int i = 0; i < nums.length - 1; i++) {
+            if (nums[i] == nums[i + 1]) {
                 return true;
             }
         }
         return false;
+    }
+
+
+    // 214 short palindrome
+
+    public static String shortpaliindrome(String s){
+        int n = s.length();
+        String rev = new StringBuilder(s).reverse().toString();
+        for (int i  = 0; i < n; i++){
+            if(s.substring(0,n-i).equals(rev.substring(i))){
+                return rev.substring(0,i)+s;
+            }
+        }
+        return rev+s;
     }
     public static void main(String[] args) {
         // question : 26. Remove Duplicates from Sorted Array
@@ -686,7 +697,39 @@ public class leetcode {
          * -109 <= nums[i] <= 109
          */
 
-        int containsDuplicate [] ={1,2,3,4};
-        System.err.println("Answer Contains Duplication = "+ containsDuplicate(containsDuplicate)); 
+        int containsDuplicate[] = { 1, 2, 3, 4 };
+        System.err.println("Answer Contains Duplication = " + containsDuplicate(containsDuplicate));
+
+        // 214 shortpalindrome
+        /*
+         * 
+         * Companies
+         * You are given a string s. You can convert s to a palindrome by adding
+         * characters in front of it.
+         * 
+         * Return the shortest palindrome you can find by performing this
+         * transformation.
+         * 
+         * 
+         * 
+         * Example 1:
+         * 
+         * Input: s = "aacecaaa"
+         * Output: "aaacecaaa"
+         * Example 2:
+         * 
+         * Input: s = "abcd"
+         * Output: "dcbabcd"
+         * 
+         * 
+         * Constraints:
+         * 
+         * 0 <= s.length <= 5 * 104
+         * s consists of lowercase English letters only.
+         */
+
+
+        String n = "aacecaaa";
+        System.err.println(shortpaliindrome(n));
     }
 }
