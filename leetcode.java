@@ -346,19 +346,40 @@ public class leetcode {
         return false;
     }
 
-
     // 214 short palindrome
 
-    public static String shortpaliindrome(String s){
+    public static String shortpaliindrome(String s) {
         int n = s.length();
         String rev = new StringBuilder(s).reverse().toString();
-        for (int i  = 0; i < n; i++){
-            if(s.substring(0,n-i).equals(rev.substring(i))){
-                return rev.substring(0,i)+s;
+        for (int i = 0; i < n; i++) {
+            if (s.substring(0, n - i).equals(rev.substring(i))) {
+                return rev.substring(0, i) + s;
             }
         }
-        return rev+s;
+        return rev + s;
     }
+
+
+
+    public static int majorityElement (int nums[]){
+        int n = nums.length;
+        int count =0;
+        int maj=0;
+        for(int i =0; i<n;i++){
+            if(count==0){
+                count=1;
+                maj = nums[i];//assume
+            }
+            else if(nums[i]==maj){
+                count ++;
+            }
+            else{
+                count --;
+            }
+        }
+        return maj;
+    }
+
     public static void main(String[] args) {
         // question : 26. Remove Duplicates from Sorted Array
         /*
@@ -728,8 +749,40 @@ public class leetcode {
          * s consists of lowercase English letters only.
          */
 
-
-        String n = "aacecaaa";
+        String n = "aacecaaa ";
         System.err.println(shortpaliindrome(n));
+
+        // 169. Majority Element
+        /*
+         * Given an array nums of size n, return the majority element.
+         * 
+         * The majority element is the element that appears more than ⌊n / 2⌋ times. You
+         * may assume that the majority element always exists in the array.
+         * 
+         * 
+         * 
+         * Example 1:
+         * 
+         * Input: nums = [3,2,3]
+         * Output: 3
+         * Example 2:
+         * 
+         * Input: nums = [2,2,1,1,1,2,2]
+         * Output: 2
+         * 
+         * 
+         * Constraints:
+         * 
+         * n == nums.length
+         * 1 <= n <= 5 * 104
+         * -109 <= nums[i] <= 109
+         * The input is generated such that a majority element will exist in the array.
+         * 
+         * 
+         * Follow-up: Could you solve the problem in linear time and in O(1) space?
+         */
+
+        int majority[] = {2,2,1,1,1,2,2};
+        System.err.println("Majority = "+majorityElement(majority));
     }
 }

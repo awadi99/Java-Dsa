@@ -91,7 +91,7 @@ public class Pattern_part2 {
                 System.err.print("*");
             }
             System.err.println();
-        }
+        }     
 
         // mirror reflect outer loop
         for(int i=n;i>=1;i--)
@@ -163,12 +163,12 @@ public class Pattern_part2 {
             for(int j=1;j<=(n-i);j++)
             {
                 System.err.print(" ");
-            }
+            } 
             for(int j=1;j<=(2*i)-1;j++)
             {
                 System.err.print("*");
             }
-            System.err.println();
+            System.err.println(); 
         }
     }
 
