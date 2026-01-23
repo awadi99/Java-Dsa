@@ -1,4 +1,6 @@
 import java.util.Arrays;
+import java.util.List;
+import java.util.*;
 
 public class leetcode {
 
@@ -359,25 +361,60 @@ public class leetcode {
         return rev + s;
     }
 
-
-
-    public static int majorityElement (int nums[]){
+    public static int majorityElement(int nums[]) {
         int n = nums.length;
-        int count =0;
-        int maj=0;
-        for(int i =0; i<n;i++){
-            if(count==0){
-                count=1;
-                maj = nums[i];//assume
-            }
-            else if(nums[i]==maj){
-                count ++;
-            }
-            else{
-                count --;
+        int count = 0;
+        int maj = 0;
+        for (int i = 0; i < n; i++) {
+            if (count == 0) {
+                count = 1;
+                maj = nums[i];// assume
+            } else if (nums[i] == maj) {
+                count++;
+            } else {
+                count--;
             }
         }
         return maj;
+    }
+
+    public static List<Integer> majority2Element(int nums[]) {
+        int n = nums.length;
+        int maj1 = 0, maj2 = 0;
+        int count1 = 0, count2 = 0;
+        for (int i = 0; i < n; i++) {
+            if (nums[i] == maj1) {
+                count1++;
+            } else if (nums[i] == maj2) {
+                count2++;
+            } else if (count1 == 0) {
+                maj1 = nums[i];
+                count1 = 1;
+            } else if (count2 == 0) {
+                maj2 = nums[i];
+                count2 = 1;
+            } else {
+                count1--;
+                count2--;
+            }
+        }
+        List<Integer> result = new ArrayList<>();
+        int freq1 = 0, freq2 = 0;
+        for (int num : nums) {
+            if (num == maj1) {
+                freq1++;
+            }
+            if (num == maj2) {
+                freq2++;
+            }
+        }
+        if (freq1 > n / 3) {
+            result.add(maj1);
+        }
+        if (freq2 > n / 3) {
+            result.add(maj2);
+        }
+        return result;
     }
 
     public static void main(String[] args) {
@@ -782,7 +819,43 @@ public class leetcode {
          * Follow-up: Could you solve the problem in linear time and in O(1) space?
          */
 
-        int majority[] = {2,2,1,1,1,2,2};
-        System.err.println("Majority = "+majorityElement(majority));
+        int majority[] = { 2, 2, 1, 1, 1, 2, 2 };
+        System.err.println("Majority = " + majorityElement(majority));
+
+        // 229. Majority Element II
+        /*
+         * Given an integer array of size n, find all elements that appear more than ⌊
+         * n/3 ⌋ times.
+         * 
+         * 
+         * 
+         * Example 1:
+         * 
+         * Input: nums = [3,2,3]
+         * Output: [3]
+         * Example 2:
+         * 
+         * Input: nums = [1]
+         * Output: [1]
+         * Example 3:
+         * 
+         * Input: nums = [1,2]
+         * Output: [1,2]
+         * 
+         * 
+         * Constraints:
+         * 
+         * 1 <= nums.length <= 5 * 104
+         * -109 <= nums[i] <= 109
+         * 
+         * 
+         * Follow up: Could you solve the problem in linear time and in O(1) space?
+         * 
+         * 
+         * Seen this question in a real interview before?
+         * 1/5
+         */
+        int majority2[] = { 2, 1, 1, 3, 1, 4, 5, 6 };
+        System.err.println("< Majority > = " + majority2Element(majority2));
     }
 }
