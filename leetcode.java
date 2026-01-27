@@ -320,6 +320,9 @@ public class leetcode {
         return sum;
     }
 
+
+    // one plus
+
     public static int[] plusOne(int nums[]) {
         int n = nums.length;
         int i = n - 1;
@@ -361,6 +364,8 @@ public class leetcode {
         return rev + s;
     }
 
+    // 169. Majority Element
+    
     public static int majorityElement(int nums[]) {
         int n = nums.length;
         int count = 0;
