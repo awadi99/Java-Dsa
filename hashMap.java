@@ -11,6 +11,16 @@ public class hashMap{
         map.put("India",4);
         map.put("UK",5);
 
+        Set<String>keys = map.keySet();
+
+        for (String k : keys) {
+            System.err.println("Key = "+k + " , Value =  "+map.get(k) );
+        }
+
+
+
+
+
         System.err.println("HASH-MAP = " + map);
 
         map.remove("India");
