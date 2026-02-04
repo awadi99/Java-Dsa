@@ -320,7 +320,6 @@ public class leetcode {
         return sum;
     }
 
-
     // one plus
 
     public static int[] plusOne(int nums[]) {
@@ -365,7 +364,7 @@ public class leetcode {
     }
 
     // 169. Majority Element
-    
+
     public static int majorityElement(int nums[]) {
         int n = nums.length;
         int count = 0;
@@ -420,6 +419,28 @@ public class leetcode {
             result.add(maj2);
         }
         return result;
+    }
+
+    public static String common(String s1, String s2) {
+        int n = Math.min(s1.length(), s2.length());
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < n; i++) {
+            if (s1.charAt(i) == s2.charAt(i)) {
+                sb.append(s1.charAt(i));
+            } else {
+                break;
+            }
+        }
+        return sb.toString();
+    }
+
+    public static String longestCommonPrefix(String[] strs) {
+
+        String res = strs[0];
+        for (int i = 1; i < strs.length; i++) {
+            res = common(res, strs[i]);
+        }
+        return res;
     }
 
     public static void main(String[] args) {
@@ -862,5 +883,36 @@ public class leetcode {
          */
         int majority2[] = { 2, 1, 1, 3, 1, 4, 5, 6 };
         System.err.println("< Majority > = " + majority2Element(majority2));
+
+        /*
+         * 14. Longest Common Prefix
+         * Write a function to find the longest common prefix string amongst an array of
+         * strings.
+         * 
+         * If there is no common prefix, return an empty string "".
+         * 
+         * 
+         * 
+         * Example 1:
+         * 
+         * Input: strs = ["flower","flow","flight"]
+         * Output: "fl"
+         * Example 2:
+         * 
+         * Input: strs = ["dog","racecar","car"]
+         * Output: ""
+         * Explanation: There is no common prefix among the input strings.
+         * 
+         * 
+         * Constraints:
+         * 
+         * 1 <= strs.length <= 200
+         * 0 <= strs[i].length <= 200
+         * strs[i] consists of only lowercase English letters if it is non-empty.
+         */
+
+        String strs[] = { "flower", "flow", "flight" };
+        System.err.println(" longestCommonPrefix =  " +longestCommonPrefix(strs));
+
     }
 }
