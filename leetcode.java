@@ -443,6 +443,26 @@ public class leetcode {
         return res;
     }
 
+    /* 11. Container With Most Water */
+
+    public static int maxArea(int height[]){
+        int n = height.length;
+        int i = 0 , j=n-1;
+        int maxWater =0;
+        while(i<j){
+            int w = j-i;
+            int h = Math.min(height[i],height[j]);
+            int area = w*h;
+            maxWater = Math.max(maxWater, area);
+            if(height[i]>height[j]){
+                j--;
+            }else{
+                i++;
+            }
+        }
+        return maxWater;
+    }
+
     public static void main(String[] args) {
         // question : 26. Remove Duplicates from Sorted Array
         /*
@@ -912,7 +932,26 @@ public class leetcode {
          */
 
         String strs[] = { "flower", "flow", "flight" };
-        System.err.println(" longestCommonPrefix =  " +longestCommonPrefix(strs));
+        System.err.println(" longestCommonPrefix =  " + longestCommonPrefix(strs));
+
+        /*
+         * 11. Container With Most Water
+         * 
+         * Hint
+         * You are given an integer array height of length n. There are n vertical lines
+         * drawn such that the two endpoints of the ith line are (i, 0) and (i,
+         * height[i]).
+         * 
+         * Find two lines that together with the x-axis form a container, such that the
+         * container contains the most water.
+         * 
+         * Return the maximum amount of water a container can store.
+         * 
+         * Notice that you may not slant the container.
+         */
+
+        int bar[] = { 1, 8, 6, 2, 5, 4, 8, 3, 7 };
+        System.err.println("MaxArea = " + maxArea(bar));
 
     }
 }
