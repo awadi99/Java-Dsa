@@ -445,22 +445,37 @@ public class leetcode {
 
     /* 11. Container With Most Water */
 
-    public static int maxArea(int height[]){
+    public static int maxArea(int height[]) {
         int n = height.length;
-        int i = 0 , j=n-1;
-        int maxWater =0;
-        while(i<j){
-            int w = j-i;
-            int h = Math.min(height[i],height[j]);
-            int area = w*h;
+        int i = 0, j = n - 1;
+        int maxWater = 0;
+        while (i < j) {
+            int w = j - i;
+            int h = Math.min(height[i], height[j]);
+            int area = w * h;
             maxWater = Math.max(maxWater, area);
-            if(height[i]>height[j]){
+            if (height[i] > height[j]) {
                 j--;
-            }else{
+            } else {
                 i++;
             }
         }
         return maxWater;
+    }
+
+
+    public static boolean containsNearByDuplicate(int [] nums,int k){
+        HashMap<Integer, Integer> map = new HashMap<>();
+        for(int i =0 ; i<nums.length;i++){
+            if(map.containsKey(nums[i])){
+                int prevIndex = map.get(nums[i]);
+                if(i-prevIndex <=k){
+                    return true;
+                }
+            }
+            map.put(nums[i],i);
+        }
+        return false;
     }
 
     public static void main(String[] args) {
@@ -953,5 +968,37 @@ public class leetcode {
         int bar[] = { 1, 8, 6, 2, 5, 4, 8, 3, 7 };
         System.err.println("MaxArea = " + maxArea(bar));
 
+        /*
+         * 219. Contains Duplicate II
+         * Given an integer array nums and an integer k, return true if there are two
+         * distinct indices i and j in the array such that nums[i] == nums[j] and abs(i
+         * - j) <= k.
+         * 
+         * 
+         * 
+         * Example 1:
+         * 
+         * Input: nums = [1,2,3,1], k = 3
+         * Output: true
+         * Example 2:
+         * 
+         * Input: nums = [1,0,1,1], k = 1
+         * Output: true
+         * Example 3:
+         * 
+         * Input: nums = [1,2,3,1,2,3], k = 2
+         * Output: false
+         * 
+         * 
+         * Constraints:
+         * 
+         * 1 <= nums.length <= 105
+         * -109 <= nums[i] <= 109
+         * 0 <= k <= 105
+         */
+
+        int target=3;
+        int atom []={1,2,3,1};
+        System.err.println(containsNearByDuplicate(atom,target));
     }
 }
