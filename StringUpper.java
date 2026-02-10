@@ -30,7 +30,7 @@ public class StringUpper {
             char str = name[i].charAt(i);
             String ch = String.valueOf(str);
             String nam1 = ch.toUpperCase();
-            // System.err.println(name[i].replaceFirst(ch, nam1));ck
+            System.err.println(name[i].replaceFirst(ch, nam1));
         }
 
         String value[] = { "flower", "flow", "flight" };
