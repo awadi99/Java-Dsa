@@ -463,19 +463,76 @@ public class leetcode {
         return maxWater;
     }
 
-
-    public static boolean containsNearByDuplicate(int [] nums,int k){
+    public static boolean containsNearByDuplicate(int[] nums, int k) {
         HashMap<Integer, Integer> map = new HashMap<>();
-        for(int i =0 ; i<nums.length;i++){
-            if(map.containsKey(nums[i])){
+        for (int i = 0; i < nums.length; i++) {
+            if (map.containsKey(nums[i])) {
                 int prevIndex = map.get(nums[i]);
-                if(i-prevIndex <=k){
+                if (i - prevIndex <= k) {
                     return true;
                 }
             }
-            map.put(nums[i],i);
+            map.put(nums[i], i);
         }
         return false;
+    }
+
+    // 3005. Count Elements With Maximum Frequency
+
+    public static int maxFrequencyElements(int nums[]) {
+        int arr[] = new int[101];
+
+        int maxFreq = 0;
+        int totalFreq = 0;
+
+        for (int num : nums) {
+            arr[num]++;
+
+            int freq = arr[num];
+
+            if (freq > maxFreq) {
+                maxFreq = freq;
+                totalFreq = maxFreq;
+            } else if (freq == maxFreq) {
+                totalFreq += maxFreq;
+            }
+        }
+        return totalFreq;
+    }
+
+
+
+
+    // 242. Valid Anagram
+
+    public static boolean isAnagram(String s , String t){
+        if(s.length()!=t.length()){
+            return false;
+        }
+
+        int len =s.length();
+        int freq[] = new int[26];
+        int indexA =0 ;
+        int indexB =0;
+        while(indexA<len && indexB<len){
+            char charA = s.charAt(indexA);
+            int freqIndexA = charA - 97;
+            
+            freq[freqIndexA]+=1;
+
+            char charB = t.charAt(indexB);
+            int freqIndexB = charB - 97;
+
+            freq[freqIndexB]-=1;
+            indexA++;
+            indexB++;
+        }
+        for(int i=0; i<26; i++){
+            if(freq[i]!=0){
+                return false;
+            }
+        }
+        return true;
     }
 
     public static void main(String[] args) {
@@ -997,8 +1054,65 @@ public class leetcode {
          * 0 <= k <= 105
          */
 
-        int target=3;
-        int atom []={1,2,3,1};
-        System.err.println(containsNearByDuplicate(atom,target));
+        int target = 3;
+        int atom[] = { 1, 2, 3, 1 };
+        System.err.println(containsNearByDuplicate(atom, target));
+
+        // 3005. Count Elements With Maximum Frequency
+        /*
+         * You are given an array nums consisting of positive integers.
+         * 
+         * Return the total frequencies of elements in nums such that those elements all
+         * have the maximum frequency.
+         * 
+         * The frequency of an element is the number of occurrences of that element in
+         * the array.
+         * 
+         * 
+         * 
+         * Example 1:
+         * 
+         * Input: nums = [1,2,2,3,1,4]
+         * Output: 4
+         * Explanation: The elements 1 and 2 have a frequency of 2 which is the maximum
+         * frequency in the array.
+         * So the number of elements in the array with maximum frequency is 4.
+         */
+
+        int freq[] = { 1, 2, 2, 3, 1, 4 };
+        System.err.println(maxFrequencyElements(freq));
+
+        // 242. Valid Anagram
+        /*
+         * Given two strings s and t, return true if t is an anagram of s, and false
+         * otherwise.
+         * 
+         * 
+         * 
+         * Example 1:
+         * 
+         * Input: s = "anagram", t = "nagaram"
+         * 
+         * Output: true
+         * 
+         * Example 2:
+         * 
+         * Input: s = "rat", t = "car"
+         * 
+         * Output: false
+         * 
+         * 
+         * 
+         * Constraints:
+         * 
+         * 1 <= s.length, t.length <= 5 * 104
+         * s and t consist of lowercase English letters.
+         */
+
+
+
+        String a ="anagram";
+        String w ="nagaram";
+        System.err.println(isAnagram(a, w));
     }
 }
