@@ -498,65 +498,91 @@ public class leetcode {
         return totalFreq;
     }
 
-
-
-
     // 242. Valid Anagram
 
-    public static boolean isAnagram(String s , String t){
-        if(s.length()!=t.length()){
+    public static boolean isAnagram(String s, String t) {
+        if (s.length() != t.length()) {
             return false;
         }
 
-        int len =s.length();
+        int len = s.length();
         int freq[] = new int[26];
-        int indexA =0 ;
-        int indexB =0;
-        while(indexA<len && indexB<len){
+        int indexA = 0;
+        int indexB = 0;
+        while (indexA < len && indexB < len) {
             char charA = s.charAt(indexA);
             int freqIndexA = charA - 97;
-            
-            freq[freqIndexA]+=1;
+
+            freq[freqIndexA] += 1;
 
             char charB = t.charAt(indexB);
             int freqIndexB = charB - 97;
 
-            freq[freqIndexB]-=1;
+            freq[freqIndexB] -= 1;
             indexA++;
             indexB++;
         }
-        for(int i=0; i<26; i++){
-            if(freq[i]!=0){
+        for (int i = 0; i < 26; i++) {
+            if (freq[i] != 0) {
                 return false;
             }
         }
         return true;
     }
 
-
-
     // 3. Longest Substring Without Repeating Characters
 
-    public static int lengthOfLongestSubstring(String s ){
+    public static int lengthOfLongestSubstring(String s) {
 
         int windowStart = 0;
         int windowEnd = 0;
         int n = s.length();
 
-        HashMap<Character,Integer>map =  new HashMap<>();
+        HashMap<Character, Integer> map = new HashMap<>();
         int maxLen = Integer.MIN_VALUE;
-        while(windowEnd<n){
+        while (windowEnd < n) {
             char ch = s.charAt(windowEnd);
-            if(map.containsKey(ch)&& map.get(ch)>=windowStart){
-                windowStart  =  map.get(ch)+1;
+            if (map.containsKey(ch) && map.get(ch) >= windowStart) {
+                windowStart = map.get(ch) + 1;
             }
 
-            map.put(ch,windowEnd);
-            maxLen = Math.max(maxLen,windowEnd-windowStart+1);
+            map.put(ch, windowEnd);
+            maxLen = Math.max(maxLen, windowEnd - windowStart + 1);
             windowEnd++;
         }
-        return (maxLen==Integer.MIN_VALUE)?0:maxLen;
+        return (maxLen == Integer.MIN_VALUE) ? 0 : maxLen;
     }
+
+    // 5. Longest Palindromic Substring
+
+    public static boolean solve(String s, int i ,int j){
+        while(i < j){
+            if(s.charAt(i)!=s.charAt(j)){
+                return false;
+            }
+            i++;
+            j--;
+        }
+        return true;
+    }
+
+    public static String longestPalindrome(String s){
+        int n = s.length();
+        int maxLen = Integer.MIN_VALUE;
+        int sp = 0 ;
+        for(int i = 0 ; i < n ; i ++){
+            for(int j = i ; j < n; j++){
+                if(solve(s, i, j)==true){
+                    if(j - i  + 1 > maxLen){
+                        maxLen =  j-i+1;
+                        sp = i;
+                    }
+                }
+            }
+        }
+        return s.substring(sp,sp+maxLen);
+    }
+
 
     public static void main(String[] args) {
         // question : 26. Remove Duplicates from Sorted Array
@@ -1132,11 +1158,11 @@ public class leetcode {
          * s and t consist of lowercase English letters.
          */
 
-        String a ="anagram";
-        String w ="nagaram";
+        String a = "anagram";
+        String w = "nagaram";
         System.err.println(isAnagram(a, w));
 
-        //3. Longest Substring Without Repeating Characters
+        // 3. Longest Substring Without Repeating Characters
 
         /*
          * Given a string s, find the length of the longest substring without duplicate
@@ -1172,7 +1198,33 @@ public class leetcode {
          */
 
         String charString = "abcdcdea";
-        System.err.println(" MaxLength =  "+lengthOfLongestSubstring(charString));
+        System.err.println(" MaxLength =  " + lengthOfLongestSubstring(charString));
 
+        // 5. Longest Palindromic Substring
+        /*
+         * Given a string s, return the longest palindromic substring in s.
+         * 
+         * 
+         * 
+         * Example 1:
+         * 
+         * Input: s = "babad"
+         * Output: "bab"
+         * Explanation: "aba" is also a valid answer.
+         * Example 2:
+         * 
+         * Input: s = "cbbd"
+         * Output: "bb"
+         * 
+         * 
+         * Constraints:
+         * 
+         * 1 <= s.length <= 1000
+         * s consist of only digits and English letters.
+         */
+
+
+        String Input = "babad";
+        System.err.println("longestPalindrome =  "+longestPalindrome(Input));
     }
 }
