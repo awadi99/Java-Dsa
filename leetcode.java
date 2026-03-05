@@ -583,40 +583,70 @@ public class leetcode {
         return s.substring(sp, sp + maxLen);
     }
 
-
     // 13. Roman to Integer
 
-    public static int getValue(char s){
-        switch(s){
-            case 'I' : return 1;
-            case 'V' : return 5;
-            case 'X' : return 10;
-            case 'L' : return 50;
-            case 'C' : return 100;
-            case 'D' : return 500;
-            case 'M' : return 1000;
-            default : return 0;
+    public static int getValue(char s) {
+        switch (s) {
+            case 'I':
+                return 1;
+            case 'V':
+                return 5;
+            case 'X':
+                return 10;
+            case 'L':
+                return 50;
+            case 'C':
+                return 100;
+            case 'D':
+                return 500;
+            case 'M':
+                return 1000;
+            default:
+                return 0;
         }
     }
 
-    public static int romanToInt(String s){
+    public static int romanToInt(String s) {
         int n = s.length();
-        int sum  = 0;
-        
-        for(int i = 0 ; i < n; i++){
+        int sum = 0;
+
+        for (int i = 0; i < n; i++) {
             char ch = s.charAt(i);
-            if((i+1) < n  && getValue(ch)<getValue(s.charAt(i+1))){
-                sum=sum-getValue(ch);
-            }
-            else{
+            if ((i + 1) < n && getValue(ch) < getValue(s.charAt(i + 1))) {
+                sum = sum - getValue(ch);
+            } else {
                 sum += getValue(ch);
             }
         }
         return sum;
     }
 
+    public static char getValueChar(char ch){
+        switch(ch){
+            case '}' :return '{';
+            case ']' :return '[';
+            case ')' :return '(';
+            default : return ' ';
+        }
+    }
 
-
+    public static boolean isValid(String s){
+        String opening = "({[";
+        Stack<Character>st = new Stack<>();
+        for(char ch : s.toCharArray()){
+            if(opening.indexOf(ch)!=-1){
+                st.push(ch);
+            }
+            else{
+                if(st.size()==0)return false;
+                char tmp = st.pop();
+                if(getValueChar(ch)!=tmp){
+                    return false;
+                }
+            }
+        }
+        return st.size()==0;
+    }
     public static void main(String[] args) {
         // question : 26. Remove Duplicates from Sorted Array
         /*
@@ -1315,9 +1345,60 @@ public class leetcode {
          */
 
         String Roman = "MCMXCIV";
-        System.err.println(" Roman answer  = " +romanToInt(Roman));
+        System.err.println(" Roman answer  = " + romanToInt(Roman));
 
+        // 20 valid parentheses
+        /*
+         * Given a string s containing just the characters '(', ')', '{', '}', '[' and
+         * ']', determine if the input string is valid.
+         * 
+         * An input string is valid if:
+         * 
+         * Open brackets must be closed by the same type of brackets.
+         * Open brackets must be closed in the correct order.
+         * Every close bracket has a corresponding open bracket of the same type.
+         * 
+         * 
+         * Example 1:
+         * 
+         * Input: s = "()"
+         * 
+         * Output: true
+         * 
+         * Example 2:
+         * 
+         * Input: s = "()[]{}"
+         * 
+         * Output: true
+         * 
+         * Example 3:
+         * 
+         * Input: s = "(]"
+         * 
+         * Output: false
+         * 
+         * Example 4:
+         * 
+         * Input: s = "([])"
+         * 
+         * Output: true
+         * 
+         * Example 5:
+         * 
+         * Input: s = "([)]"
+         * 
+         * Output: false
+         * 
+         * 
+         * 
+         * Constraints:
+         * 
+         * 1 <= s.length <= 104
+         * s consists of parentheses only '()[]{}'.
+         */
 
+        String parentheses = "({[()]})";
+        System.err.println("valid parentheses = "+isValid(parentheses));
 
     }
 }
