@@ -1,6 +1,6 @@
 public class Sliding_Windows {
 
-    public static int Sliding_Windows(int window,int nums[])
+    public static int Sliding_Window(int window,int nums[])
     {
         // and find the maximum subarray
         int sum =0;
@@ -19,6 +19,6 @@ public class Sliding_Windows {
     {
         int nums[]={100,200,300,400};
         int key =2;
-        System.err.println(Sliding_Windows(key, nums));
+        System.err.println(Sliding_Window(key, nums));
     }
 }

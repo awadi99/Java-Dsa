@@ -50,8 +50,33 @@ public class Prefix_Array_sum {
 
     }
 
+
+
+    public static int example(int number[]){
+
+        int max = Integer.MIN_VALUE;
+        int currsum =0;
+
+        int preifix[]= new int[number.length];
+        preifix[0]=number[0];
+        for(int i= 1;i<number.length;i++){
+            preifix[i]=preifix[i-1]+number[i];
+        }
+        for(int i =0 ; i<number.length;i++){
+            currsum =0 ;
+            for(int j =0 ; j<number.length;j++){
+                currsum =i==0?preifix[j]:preifix[j]-preifix[i-1];
+                max = Math.max(max, currsum);
+            }
+        }
+        
+        return max;
+
+    }
+
     public static void main(String[] args) {
         int number[] = { -2,1,-3,4,-1,2,1,-5,4 };
         System.err.println(isPrefix_Array_sum(number));
+        System.err.println(example(number));
     }
 }

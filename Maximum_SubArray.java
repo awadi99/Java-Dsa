@@ -46,5 +46,6 @@ public class Maximum_SubArray {
         int number[] = { -2,-1};
         
         System.err.println("\nMax = "+ isMaxium_SubArray(number));
+        
     }
 }

@@ -88,7 +88,7 @@ public class leetcode {
         char arr[] = s.toCharArray();
         int i = 0;
         int n = arr.length;
-        while (i < n) {
+        while (i < n) { 
             int j = Math.min(i + k - 1, n - 1);
             // understand the size of k
             // means if suppose k size = 10 (i+k-1) 0 + 10 = 10 - 1 = 9
@@ -112,7 +112,7 @@ public class leetcode {
         for (int i = 0; i < nums.length; i++) {
             if (nums[i] > num && nums[i] != max) {
                 num = nums[i];
-            }
+            }    
         }
         return num;
     }
@@ -282,13 +282,13 @@ public class leetcode {
     // 121. Best Time to Buy and Sell Stock
     public static int buy_Sell_Stock(int prices[]) {
         int maxProfit = 0;
-        int buyProfit = Integer.MAX_VALUE;
+        int buyPrice = Integer.MAX_VALUE;
         for (int i = 0; i < prices.length; i++) {
-            if (buyProfit < prices[i]) {
-                int profit = prices[i] - buyProfit;
+            if (buyPrice < prices[i]) {
+                int profit = prices[i] - buyPrice;
                 maxProfit = Math.max(maxProfit, profit);
             } else {
-                buyProfit = prices[i];
+                buyPrice = prices[i];
             }
         }
         return maxProfit;
@@ -334,7 +334,7 @@ public class leetcode {
         }
         nums = new int[nums.length + 1];
         nums[0] += 1;
-        return nums;
+        return nums;         
 
     }
 
@@ -350,7 +350,7 @@ public class leetcode {
 
     // 214 short palindrome
 
-    public static String shortpaliindrome(String s) {
+    public static String shortpaliindrome(String s) {    
         int n = s.length();
         String rev = new StringBuilder(s).reverse().toString();
         for (int i = 0; i < n; i++) {
@@ -362,7 +362,7 @@ public class leetcode {
     }
 
     // 169. Majority Element
-
+    
     public static int majorityElement(int nums[]) {
         int n = nums.length;
         int count = 0;
@@ -469,7 +469,7 @@ public class leetcode {
                 if (i - prevIndex <= k) {
                     return true;
                 }
-            }
+            }  
             map.put(nums[i], i);
         }
         return false;
@@ -486,7 +486,7 @@ public class leetcode {
         for (int num : nums) {
             arr[num]++;
 
-            int freq = arr[num];
+            int freq = arr[num]; 
 
             if (freq > maxFreq) {
                 maxFreq = freq;
@@ -688,7 +688,7 @@ public class leetcode {
          * Output: "leotcede"
          * 
          */
-        // reverse vowels
+        // reverse vowels 
         String input = "leetcode";
         // System.err.println(isVowelsReverse(input));
 

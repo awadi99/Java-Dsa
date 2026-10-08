@@ -24,7 +24,7 @@ public class StringUpper {
     }
 
     public static void main(String[] args) {
-        String name[] = { "aditya", "omkar", "yash", "krishna", "priya" };
+        String name[] = { "aditya", "omkar", "yash", "krishna", "speed" };
 
         for (int i = 0; i < name.length; i++) {
             char str = name[i].charAt(i);

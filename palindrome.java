@@ -88,8 +88,8 @@ public class palindrome {
     public static int isPalindromeNumber(int n) {
         int count = 0;
         for (int i = 1; i <= n; i++) {
-            if (isPalindrome(i)) {
-                System.err.print(" " + i);
+            if (isPalindrome(i)) { 
+                System.err.print(" " + i); 
                 count++;
             }
         }
