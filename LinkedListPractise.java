@@ -44,6 +44,7 @@ public class LinkedListPractise {
             if(idx==0){
                 addNew(data);
                 return;
+
             }
             Node newNode = new Node(data);
             Node temp = head;
@@ -80,7 +81,7 @@ public class LinkedListPractise {
         // 
         llp.addLast(4);
         llp.addLast(5);
-        llp.addLast(6);
+        llp.addLast(7);
 
         // add mid
 
