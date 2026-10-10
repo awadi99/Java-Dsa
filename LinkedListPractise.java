@@ -152,6 +152,24 @@ public class LinkedListPractise {
         }
 
 
+
+        // reverse itr
+
+        public void reverseItr(){
+            Node prev =null; //before a head  all null;
+            Node current = tail = head;
+            Node next;
+
+            while(current != null){
+                next = current.next;
+                current.next =prev;
+                prev=current;
+                current=next;
+            }
+            head = prev;
+        }
+
+
         // print
 
         public void printList(){
@@ -202,6 +220,14 @@ public class LinkedListPractise {
         System.err.println();
         // search
         System.err.print(" Search present = "+llp.itrSearch(4));
+
+
+
+
+        // Reverse Itr 
+        System.err.println();
+        llp.reverseItr();
+        llp.printList();
 
         System.err.println();
         System.err.println(" "+llp.size);
