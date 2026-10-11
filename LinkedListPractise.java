@@ -15,7 +15,6 @@ public class LinkedListPractise {
         
 
         // addFirst
-
         public void addNew (int data){
             Node newNode = new Node(data);
             size++;
@@ -169,9 +168,33 @@ public class LinkedListPractise {
             head = prev;
         }
 
+        // company problem remove the nth Node
+
+
+        public void removeNth (int n){
+        
+            int sz =0;
+            Node temp = head;
+            while (temp != null){
+                temp = temp.next;
+                sz++;
+            }
+
+            if(n==sz){
+                head = head.next;
+                return;
+            }
+
+            Node prev = head;
+
+            for(int i =1; i<sz-n; i++){
+                prev=prev.next;
+            }
+            prev.next=prev.next.next;
+            return;
+        }
 
         // print
-
         public void printList(){
             Node temp=head;
             while(temp!=null){
@@ -229,6 +252,12 @@ public class LinkedListPractise {
         llp.reverseItr();
         llp.printList();
 
+
+        // company problem remove nth element of node
+
+        llp.removeNth(3);
+        System.err.println();
+        llp.printList();
         System.err.println();
         System.err.println(" "+llp.size);
     }
