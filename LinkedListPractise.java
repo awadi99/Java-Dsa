@@ -187,6 +187,7 @@ public class LinkedListPractise {
 
             Node prev = head;
 
+            
             for(int i =1; i<sz-n; i++){
                 prev=prev.next;
             }
