@@ -195,6 +195,76 @@ public class LinkedListPractise {
             return;
         }
 
+
+        //  leetcode  palindrome
+
+        public Node findMid (Node head){
+            Node slow = head;
+            Node fast =head;
+            while(fast != null && fast.next != null ){
+                slow=slow.next;  // slow +1;
+                fast = fast.next.next; // fast + 2
+            }
+            return slow;
+        }
+
+        public boolean checkPalindrome(){
+            if(head == null && head.next!=null){
+                return true;
+            } 
+
+            Node midNode = findMid(head);
+
+            Node prev = null;
+            Node currtent = midNode;
+            Node next;
+
+            while(currtent != null){
+                next = currtent.next;
+                currtent.next=prev;
+                prev=currtent;
+                currtent=next;
+            }
+            
+
+            Node right = prev;
+            Node left = head;
+
+            while(right !=null){
+                if(left.data != right.data){
+                    return false;
+                }
+                left=left.next;
+                right=right.next;
+            }
+
+            return true;
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         // print
         public void printList(){
             Node temp=head;
