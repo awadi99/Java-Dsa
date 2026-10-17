@@ -41,7 +41,6 @@ public class LinkedListPractise {
 
 
         // add mid
-
         public void addMid (int idx, int data){
             if(idx==0){
                 addNew(data);
@@ -245,21 +244,42 @@ public class LinkedListPractise {
 
 
 
+        // 92. Reverse Linked List II
+        
+
+        //Given the head of a singly linked list and two integers left and right 
+        // where left <= right, reverse the nodes of the list from position 
+        // left to position right, and return the reversed list.
 
 
 
+        public Node reverseBetween (/*Node head*/ int left ,int right){
 
+            if (head==null || head.next==null){
+                return head;
+            }
+            
+            Node dummy = new Node(0);
+            dummy.next= head;
 
+            Node prev = dummy;
 
+            for(int i=1; i< left; i++){
+                prev=prev.next;
+            }
 
+            Node current = prev.next;
 
+            for(int i =1; i<=right-left; i++){
 
+                Node temp = prev.next;
+                prev.next=current.next;
+                current.next= current.next.next;
+                prev.next.next= temp;
+            }
 
-
-
-
-
-
+            return dummy.next;
+        }
 
 
 
