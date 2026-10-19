@@ -284,6 +284,30 @@ public class LinkedListPractise {
 
 
 
+        // 83. Remove Duplicates from Sorted List
+        // Given the head of a sorted linked list,
+        //  delete all duplicates such that each element appears only once. 
+        // Return the linked list sorted as well.
+
+        public Node deleteDuplicates(){
+
+            if(head !=null || head.next ==null){
+                return head;
+            }
+            Node current = head;
+
+            while(current !=null && current.next != null){
+                if(current.data == current.next.data){
+                    current.next=current.next.next;
+                }
+                else{
+                    current=current.next;
+                }
+            }
+            return head;
+        }
+
+
 
         // print
         public void printList(){
@@ -351,6 +375,11 @@ public class LinkedListPractise {
         llp.printList();
         System.err.println();
         System.err.println(" "+llp.size);
+
+
+
+
+        System.err.println(llp.deleteDuplicates());
     }
 }
  
