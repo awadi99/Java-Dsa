@@ -307,6 +307,40 @@ public class LinkedListPractise {
             return head;
         }
 
+        // 21. Merge Two Sorted Lists
+        // You are given the heads of two sorted linked lists list1 and list2.
+        // Merge the two lists into one sorted list. The list should be made by splicing
+        // together the nodes of the first two lists.
+        // Return the head of the merged linked list.
+
+
+
+        public Node mergeTwoLists(Node List1, Node List2){
+            if(List1==null){
+                return List2;
+            }
+
+            if(List2==null){
+                return List1;
+            }
+
+            Node result;
+
+            if(List1.data < List2.data){
+                result = List1;
+                result.next=mergeTwoLists(List1.next, List2);
+            }
+            else{
+                result=List2;
+                result.next=mergeTwoLists(List1, List2.next);
+            }
+
+            return result;
+        }
+
+
+
+
 
 
         // print
